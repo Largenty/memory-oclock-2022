@@ -1,0 +1,48 @@
+@media screen and (min-width: 780px) {
+  .game {
+    &-container {
+      width: calc(135px * 4 + 40px);
+      height: calc(183px * 4 + 40px);
+      margin: auto;
+    }
+  }
+  .card {
+    // taille d'une carte Magic
+    width: 135px;
+    height: 183px;
+    // -----------------------
+    &-container {
+      width: calc(135px * 4 + 40px);
+      height: calc(183px * 4 + 40px);
+      perspective: 1000px;
+    }
+
+    &-front,
+    &-back {
+      width: 135px;
+      height: 183px;
+    }
+  }
+
+  #progressBar {
+    position: relative;
+    width: 80%;
+    margin: 1em auto;
+    height: 30px;
+    background-color: $pink;
+  }
+
+  .table {
+    width: 620px;
+    margin: 2em auto;
+  }
+  table {
+    width: 100%;
+  }
+
+  td,
+  th {
+    padding: 0.4em 1em;
+    text-align: center;
+  }
+}

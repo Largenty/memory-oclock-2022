@@ -1,0 +1,294 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  background-color: #1a1a1a;
+  color: rgba(255, 70, 141, 0.918);
+}
+
+header {
+  margin: 2em auto;
+}
+header > h1 {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+footer {
+  width: 100%;
+  margin-top: 2em;
+}
+footer > p {
+  text-align: center;
+  font-style: italic;
+}
+
+button {
+  margin: 1em auto;
+  width: fit-content;
+  padding: 0.4em 1em;
+  border: none;
+  border: 1px solid #ff468d;
+  background-color: #1a1a1a;
+  color: #ff468d;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  border: 1px solid #1a1a1a;
+  background-color: #ff468d;
+  color: #1a1a1a;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid rgba(26, 26, 26, 0.5);
+  background-color: rgba(255, 70, 141, 0.5);
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.table {
+  width: 100%;
+  margin-top: 2em;
+}
+
+table {
+  width: 100%;
+}
+
+thead {
+  color: rgba(255, 70, 141, 0.918);
+  padding: 0.4em 0.2em;
+  font-weight: 700;
+}
+
+tr:nth-child(2n) {
+  background-color: rgba(255, 70, 141, 0.5);
+}
+
+td,
+th {
+  padding: 0.4em 0.2em;
+  text-align: center;
+}
+
+td {
+  color: #ffdcdc;
+}
+
+#userName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+}
+#userName > p {
+  text-align: center;
+  margin-bottom: 1em;
+}
+#userName > input {
+  padding: 0.4em 0.4em;
+  width: fit-content;
+  margin: 0 auto;
+  border: none;
+  border-radius: 3px;
+  background-color: #ffdcdc;
+}
+#userName > input:focus {
+  color: rgba(255, 70, 141, 0.918);
+}
+
+.game {
+  width: 100%;
+}
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 380px;
+  height: 500px;
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  width: 85px;
+  height: 115px;
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 8px;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 4rem;
+  width: 380px;
+  height: 500px;
+  perspective: 1000px;
+}
+.card-front, .card-back {
+  width: 85px;
+  height: 115px;
+  position: absolute;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.5s;
+}
+.card-front:hover, .card-back:hover {
+  box-shadow: 3px 3px 35px -5px rgba(255, 70, 141, 0.5);
+}
+.card-front {
+  transform: rotateY(180deg);
+}
+.card.flip {
+  transform: rotateY(180deg);
+}
+.card:active {
+  transform: scale(0.75);
+  transition: transform 0.2s;
+}
+
+#progressBar {
+  position: relative;
+  width: 72%;
+  margin: 1em auto;
+  height: 30px;
+  background-color: rgba(255, 70, 141, 0.918);
+}
+
+#barStatus {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: #5977ff;
+  transition: width 0.5s;
+}
+
+.controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.5s;
+}
+.controller #time {
+  color: rgba(255, 70, 141, 0.918);
+  font-weight: 700;
+  font-size: 1.4em;
+}
+
+@media screen and (min-width: 780px) {
+  .game-container {
+    width: 580px;
+    height: 772px;
+    margin: auto;
+  }
+
+  .card {
+    width: 135px;
+    height: 183px;
+  }
+  .card-container {
+    width: 580px;
+    height: 772px;
+    perspective: 1000px;
+  }
+  .card-front, .card-back {
+    width: 135px;
+    height: 183px;
+  }
+
+  #progressBar {
+    position: relative;
+    width: 80%;
+    margin: 1em auto;
+    height: 30px;
+    background-color: rgba(255, 70, 141, 0.918);
+  }
+
+  .table {
+    width: 620px;
+    margin: 2em auto;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  td,
+th {
+    padding: 0.4em 1em;
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=index.e378193d.css.map */

@@ -1,0 +1,33 @@
+#progressBar {
+  position: relative;
+  width: 72%;
+  margin: 1em auto;
+  height: 30px;
+  background-color: $pink;
+}
+
+#barStatus {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  // background: linear-gradient(
+  //   90deg,
+  //   rgb(255, 255, 255) 0%,
+  //   rgb(255, 173, 162) 42%,
+  //   rgb(241, 12, 4) 100%
+  // );
+  background-color: $blue;
+  transition: width 0.5s;
+}
+
+.controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.5s;
+  & #time {
+    color: $pink;
+    font-weight: 700;
+    font-size: 1.4em;
+  }
+}

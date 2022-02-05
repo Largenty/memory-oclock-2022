@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.scss" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>MEMOXY</h1>
+    </header>
+    <main class="game">
+      <div class="flex">
+        <section id="userName">
+          <p>Votre pseudo est :</p>
+          <input id="input" type="text" placeholder="Entrer votre pseudo..." />
+          <button id="name">Valider</button>
+        </section>
+
+        <section class="cards">
+          <div class="card-container"></div>
+
+          <div id="progressBar">
+            <div id="barStatus"></div>
+          </div>
+          <div class="controller">
+            <button id="start">Start</button>
+            <p id="time">60s</p>
+            <button id="reset">Reset</button>
+          </div>
+        </section>
+
+        <section class="table">
+          <table id="leadershipBoard">
+            <thead id="thead">
+              <tr>
+                <th>Rang</th>
+                <th>Username</th>
+                <th>score</th>
+                <th>time</th>
+                <th>move</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>Exercice réalisé dans le cadre d'un test technique. Ludovic Argenty 2022</p>
+    </footer>
+
+    <script src="js/index.js" type="module"></script>
+  </body>
+</html>

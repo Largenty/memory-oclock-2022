@@ -1,0 +1,30 @@
+.table {
+  width: 100%;
+  margin-top: 2em;
+}
+
+table {
+  width: 100%;
+}
+
+thead {
+  color: $pink;
+  padding: 0.4em 0.2em;
+  font-weight: 700;
+}
+
+tr:nth-child(2n) {
+  background-color: $pink-50;
+}
+
+td,
+th {
+  padding: 0.4em 0.2em;
+  text-align: center;
+}
+
+td {
+  color: $white;
+}
+
+

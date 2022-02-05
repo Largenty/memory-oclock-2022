@@ -1,0 +1,8 @@
+footer {
+  width: 100%;
+  margin-top: 2em;
+  & > p {
+    text-align: center;
+    font-style: italic;
+  }
+}

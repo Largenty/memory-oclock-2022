@@ -1,0 +1,76 @@
+.game {
+  width: 100%;
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(85px * 4 + 40px);
+    height: calc(115px * 4 + 40px);
+    margin: auto;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  // taille d'une carte Magic
+  width: 85px;
+  height: 115px;
+  // -----------------------
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 8px;
+
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 4rem;
+    // calcule de la width et de la height total du container.
+    // ici on souhaite avoir un 4 x 4 .
+    // on prend la w + h d'une carte et on multiplie par le nombre de colonne que l'on souhaite avoir.
+    // et on rajouter le margin (4 * (5px * 2)) (margin entre chaque carte = 5px cf line 21).
+    width: calc(85px * 4 + 40px);
+    height: calc(115px * 4 + 40px);
+    // margin: auto;
+    // Si la perspective est petite, alors de notre point de vue, la rotation donnera l'effet que la carte "sort" de son container.
+    // A contratio, si la perspective est grande, la rotation sera plus éloignée de nous et rendra l'effet voulu.
+    // https://developer.mozilla.org/fr/docs/Web/CSS/perspective
+    // Vous pouvez essayer avec une perspective de 1 / 100 pour la différence.
+    perspective: 1000px;
+  }
+
+  &-front,
+  &-back {
+    width: 85px;
+    height: 115px;
+    position: absolute;
+    border-radius: 8px;
+    // permet de cacher l'élément qui se trouve derrière
+    backface-visibility: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.5s;
+    &:hover {
+      box-shadow: 3px 3px 35px -5px $pink-50;
+    }
+  }
+
+  &-front {
+    transform: rotateY(180deg);
+  }
+
+  &.flip {
+    transform: rotateY(180deg);
+  }
+
+  &:active {
+    transform: scale(0.75);
+    transition: transform 0.2s;
+  }
+}

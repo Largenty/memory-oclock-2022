@@ -1,0 +1,27 @@
+button {
+  margin: 1em auto;
+  width: fit-content;
+  padding: 0.4em 1em;
+  border: none;
+  border: 1px solid rgb(255, 70, 141);
+  background-color: rgb(26, 26, 26);
+  color: rgb(255, 70, 141);
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgb(26, 26, 26);
+    background-color: rgb(255, 70, 141);
+    color: rgb(26, 26, 26);
+  }
+}
+
+
+button:disabled,
+button[disabled]{
+  border: 1px solid rgba(26, 26, 26, 0.5);
+  background-color: rgba(255, 70, 141, 0.5);
+  color: rgba(26, 26, 26, 0.5);
+}
