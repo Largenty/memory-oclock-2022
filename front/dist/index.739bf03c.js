@@ -539,7 +539,126 @@ const app = {
 };
 document.addEventListener("load", app.init());
 
-},{"./gameBoard":"ebeTO","./leadershipBoard":"7d4d4","./card/index":"bd9EV","./utils/get":"3IVc9","./userName":"4pdm1"}],"ebeTO":[function(require,module,exports) {
+},{"./card/index":"bd9EV","./gameBoard":"ebeTO","./leadershipBoard":"7d4d4","./userName":"4pdm1","./utils/get":"3IVc9"}],"bd9EV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "card", ()=>card
+);
+var _dataImgs = require("./dataImgs");
+const card = {
+    createCard: ()=>{
+        _dataImgs.dataImgs.forEach((dataImage)=>{
+            const { source , alt , dataSet  } = dataImage;
+            const container = card.cardContainer(dataSet);
+            const frontCard = card.frontCard(source, alt);
+            const backCard = card.backCard();
+            const gameBoard = document.getElementsByClassName("card-container");
+            gameBoard[0].appendChild(container);
+            container.appendChild(frontCard);
+            container.appendChild(backCard);
+        });
+    },
+    cardContainer: (dataSet)=>{
+        const container = document.createElement("div");
+        container.classList.add("card");
+        container.dataset.card = dataSet;
+        return container;
+    },
+    frontCard: (source, alt)=>{
+        const frontCard = document.createElement("img");
+        frontCard.classList.add("card-front");
+        frontCard.src = source;
+        frontCard.alt = alt;
+        return frontCard;
+    },
+    backCard: ()=>{
+        const backCard = document.createElement("img");
+        backCard.classList.add("card-back");
+        backCard.src = "https://preview.redd.it/qnnotlcehu731.jpg?auto=webp&s=55d9e57e829608fc8e632eb2e4165d816288177c";
+        backCard.alt = "Dos d'une carte Magic the gathering";
+        return backCard;
+    }
+};
+
+},{"./dataImgs":"b9ZPf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b9ZPf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "dataImgs", ()=>dataImgs
+);
+const dataImgs = [
+    {
+        source: "https://www.play-in.com/images/cartes/stronghold/mox_diamond.jpg",
+        alt: "mox de diamant",
+        dataSet: "mox_diamond"
+    },
+    {
+        source: "https://www.play-in.com/images/cartes/scars_of_mirrodin/mox_opal.png",
+        alt: "mox d'opal",
+        dataSet: "mox_opal"
+    },
+    {
+        source: "https://www.play-in.com/images/cartes/dominaria/mox_amber.png",
+        alt: "mox d'amber",
+        dataSet: "mox_amber"
+    },
+    {
+        source: "https://www.play-in.com/images/cartes/modern_horizons/mox_tantalite.png",
+        alt: "mox de tantalite",
+        dataSet: "mox_tantalite"
+    },
+    {
+        source: "https://www.play-in.com/images/cartes/mirrodin/chrome_mox.jpg",
+        alt: "mox de chrome",
+        dataSet: "chrome_mox"
+    },
+    {
+        source: "https://www.play-in.com/images/cartes/unlimited/mox_jet.jpg",
+        alt: "mox jet",
+        dataSet: "mox_jet"
+    },
+    {
+        source: "https://mtg-wiki.fr/wp-content/themes/rt_citadel/custom/images/leb-265-mox-ruby.jpg",
+        alt: "mox ruby",
+        dataSet: "mox_ruby"
+    },
+    {
+        source: "https://static.cardmarket.com/img/82721fdcc32d450e26c2e52900e58f17/items/1/LEA/5465.jpg",
+        alt: "lotus noir",
+        dataSet: "black_lotus"
+    }, 
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"ebeTO":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "gameBoard", ()=>gameBoard
@@ -664,37 +783,7 @@ const gameBoard = {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./leadershipBoard":"7d4d4","./timer":"9Okty","./move":"77eKm","./utils/get":"3IVc9","./userName":"4pdm1"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"7d4d4":[function(require,module,exports) {
+},{"./leadershipBoard":"7d4d4","./timer":"9Okty","./move":"77eKm","./utils/get":"3IVc9","./userName":"4pdm1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7d4d4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "leadershipBoard", ()=>leadershipBoard
@@ -743,7 +832,7 @@ const leadershipBoard = {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./utils/fetch":"5AvII","./utils/get":"3IVc9"}],"5AvII":[function(require,module,exports) {
+},{"./utils/fetch":"5AvII","./utils/get":"3IVc9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5AvII":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchData", ()=>fetchData
@@ -888,95 +977,6 @@ const userName = {
     get: ()=>name ?? null
 };
 
-},{"./utils/get":"3IVc9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bd9EV":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "card", ()=>card
-);
-var _dataImgs = require("./dataImgs");
-const card = {
-    createCard: ()=>{
-        _dataImgs.dataImgs.forEach((dataImage)=>{
-            const { source , alt , dataSet  } = dataImage;
-            const container = card.cardContainer(dataSet);
-            const frontCard = card.frontCard(source, alt);
-            const backCard = card.backCard();
-            const gameBoard = document.getElementsByClassName("card-container");
-            gameBoard[0].appendChild(container);
-            container.appendChild(frontCard);
-            container.appendChild(backCard);
-        });
-    },
-    cardContainer: (dataSet)=>{
-        const container = document.createElement("div");
-        container.classList.add("card");
-        container.dataset.card = dataSet;
-        return container;
-    },
-    frontCard: (source, alt)=>{
-        const frontCard = document.createElement("img");
-        frontCard.classList.add("card-front");
-        frontCard.src = source;
-        frontCard.alt = alt;
-        return frontCard;
-    },
-    backCard: ()=>{
-        const backCard = document.createElement("img");
-        backCard.classList.add("card-back");
-        backCard.src = "https://preview.redd.it/qnnotlcehu731.jpg?auto=webp&s=55d9e57e829608fc8e632eb2e4165d816288177c";
-        backCard.alt = "Dos d'une carte Magic the gathering";
-        return backCard;
-    }
-};
-
-},{"./dataImgs":"b9ZPf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b9ZPf":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "dataImgs", ()=>dataImgs
-);
-const dataImgs = [
-    {
-        source: "https://www.play-in.com/images/cartes/stronghold/mox_diamond.jpg",
-        alt: "mox de diamant",
-        dataSet: "mox_diamond"
-    },
-    {
-        source: "https://www.play-in.com/images/cartes/scars_of_mirrodin/mox_opal.png",
-        alt: "mox d'opal",
-        dataSet: "mox_opal"
-    },
-    {
-        source: "https://www.play-in.com/images/cartes/dominaria/mox_amber.png",
-        alt: "mox d'amber",
-        dataSet: "mox_amber"
-    },
-    {
-        source: "https://www.play-in.com/images/cartes/modern_horizons/mox_tantalite.png",
-        alt: "mox de tantalite",
-        dataSet: "mox_tantalite"
-    },
-    {
-        source: "https://www.play-in.com/images/cartes/mirrodin/chrome_mox.jpg",
-        alt: "mox de chrome",
-        dataSet: "chrome_mox"
-    },
-    {
-        source: "https://www.play-in.com/images/cartes/unlimited/mox_jet.jpg",
-        alt: "mox jet",
-        dataSet: "mox_jet"
-    },
-    {
-        source: "https://mtg-wiki.fr/wp-content/themes/rt_citadel/custom/images/leb-265-mox-ruby.jpg",
-        alt: "mox ruby",
-        dataSet: "mox_ruby"
-    },
-    {
-        source: "https://static.cardmarket.com/img/82721fdcc32d450e26c2e52900e58f17/items/1/LEA/5465.jpg",
-        alt: "lotus noir",
-        dataSet: "black_lotus"
-    }, 
-];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["l4AUa","ebWYT"], "ebWYT", "parcelRequire8f8d")
+},{"./utils/get":"3IVc9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["l4AUa","ebWYT"], "ebWYT", "parcelRequire8f8d")
 
 //# sourceMappingURL=index.739bf03c.js.map
