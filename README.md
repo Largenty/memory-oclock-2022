@@ -66,3 +66,7 @@ Si vous le souhaitez, vous pouvez essayer d'incorporer deux trois fonctionnalit�
 - afficher la position du joueur même s'il n'est pas dans le top 10 ;)
 - rajouter le nombre de coups à côté du temps.
 - rajouter un boutton pour changer la limite de temps.
+
+## Fichier postman : 
+
+Si vous utilisez postman, vous pouvez importer le fichier dans l'application POSTMAN pour ne pas à avoir à écrire les routes :)
