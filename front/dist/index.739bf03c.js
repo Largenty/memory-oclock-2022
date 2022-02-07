@@ -524,8 +524,10 @@ var _gameBoard = require("./gameBoard");
 var _leadershipBoard = require("./leadershipBoard");
 var _userName = require("./userName");
 var _get = require("./utils/get");
+// lors du lancement de l'application, on exécutera que app.init()
 const app = {
     init: ()=>{
+        // O
         for(let i = 1; i <= 2; i++)_index.card.createCard();
         document.title = "Memoxy";
         const cardsList = _get.get.allByClass(".card");
@@ -773,7 +775,7 @@ const gameBoard = {
             _move.move.resetCount();
             return alert(`C'est gagné ${data.userName} !!! Vous avez fait un score de ${data.time * data.move} (temps: ${data.time}, move: ${data.move} )`);
         }
-        if (time == 60) {
+        if (time >= 60) {
             lockGame = true;
             _timer.timer.timerCount(false);
             _move.move.resetCount();

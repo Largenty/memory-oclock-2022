@@ -130,7 +130,7 @@ const gameBoard = {
       );
     }
 
-    if (time == 60) {
+    if (time >= 60) {
       lockGame = true;
       timer.timerCount(false);
       move.resetCount();
