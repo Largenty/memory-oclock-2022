@@ -81,6 +81,7 @@ const verifyIfplayerExist = async (req, res, next) => {
   next();
 };
 
+// Get player by id && using a middleware
 router.route("/:id").get(verifyIfplayerExist, async (req, res) => {
   res.send(res.player.userName);
 });
