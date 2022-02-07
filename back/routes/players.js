@@ -64,6 +64,9 @@ router.route("/").post(async (req, res) => {
   }
 });
 
+
+// Ici on va créer une fonction qui va venir vérifier si un joueur exist (grâce à l'id que l'on passer dans l'url)
+// Cette fonction est un middleware.
 const verifyIfplayerExist = async (req, res, next) => {
   let player;
   try {
@@ -78,11 +81,13 @@ const verifyIfplayerExist = async (req, res, next) => {
   next();
 };
 
-router
-  .route("/:id")
-  .get(verifyIfplayerExist, async (req, res) => {});
+router.route("/:id").get(verifyIfplayerExist, async (req, res) => {
+  res.send(res.player.userName);
+});
 
-router.route("/:id").delete(async (req, res) => {});
+// Petit challenge:
+// Je vous laisse créer la fonction à l'intérieur de cette méthode pour supprimer un utilisateur
+router.route("/:id").delete(verifyIfplayerExist, async (req, res) => {});
 
 // On export notre module pour pouvoir l'utiliser ailleur.
 module.exports = router;
