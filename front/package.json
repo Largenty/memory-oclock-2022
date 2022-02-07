@@ -6,6 +6,7 @@
   "scripts": {
     "start": "parcel src/index.html --open -p, --port 8000 --lazy"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {

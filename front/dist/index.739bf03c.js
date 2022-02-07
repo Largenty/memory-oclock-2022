@@ -837,7 +837,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchData", ()=>fetchData
 );
-const url = "http://localhost:3000/players/";
+const url = "http://localhost:8888/players/";
 const fetchData = {
     getAllPlayers: async ()=>{
         const allPlayersData = await fetch(url, {
