@@ -54,6 +54,10 @@ Utiliser les commandes suivantes :
 - dotenv
 - cors
 
+### BDD :
+
+- mongoDB
+
 ## Pour aller plus loin :
 
 Si vous le souhaitez, vous pouvez essayer d'incorporer deux trois fonctionnalités en plus :
