@@ -28,6 +28,7 @@ Utiliser les commandes suivantes :
 ### Pour lancer le jeu:
 
 - `npm run start` côté front si vous souhaitez utiliser le serveur heroku (le serveur mettra environ 30sec à démarrer).
+
   Si vous souhaitez utiliser le back à la place d'héroku :
 - changer dans `front/src/js/utils/fetch.js` l'url par `http://localhost:8888/players/`
 - Puis `npm run start` côté back et front :)
