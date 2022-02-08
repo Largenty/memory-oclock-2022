@@ -2,7 +2,7 @@
 
 const url = "https://memoxy-2022.herokuapp.com/players/"; // or http://localhost:8888/players/
 const fetchData = {
-  // Cette fonction permet de récupèrer tout les joueurs.
+  // Cette fonction permet de récupérer tous les joueurs.
   // comme on fait un appel vers notre back, on utilisera une fonction asynchrone.
   getAllPlayers: async () => {
     const allPlayersData = await fetch(url, {

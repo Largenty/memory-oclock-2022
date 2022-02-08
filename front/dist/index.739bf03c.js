@@ -527,8 +527,8 @@ var _get = require("./utils/get");
 // Lors du lancement de l'application, on exécutera que app.init()
 const app = {
     init: ()=>{
-        // create.cards() est une fonction qui permet de créer chaque carte que l'on a dans nos data.
-        // Comme on a besoin d'une paires de chaque élément, on exécute deux fois la fonction.
+        // create.cards() est une fonction qui permet de créer chaque carte que l'on a dans nos datas.
+        // Comme on a besoin d'une paire de chaque élément, on exécute deux fois la fonction.
         for(let i = 1; i <= 2; i++)_index.card.createCards();
         // On récupére chaque élément possédant la classe "card" (document.querySelectorAll) avec notre fonction custom (utils)
         const cardsList = _get.get.allByClass(".card");
@@ -545,7 +545,7 @@ const app = {
         _leadershipBoard.leadershipBoard.getListPlayers();
     }
 };
-// L’évènement load est émis lorsqu’une ressource et ses ressources dépendantes sont completement chargées.
+// L’évènement load est émis lorsqu’une ressource et ses ressources dépendantes sont complètement chargées.
 document.addEventListener("load", app.init());
 
 },{"./card/index":"bd9EV","./gameBoard":"ebeTO","./leadershipBoard":"7d4d4","./userName":"4pdm1","./utils/get":"3IVc9"}],"bd9EV":[function(require,module,exports) {
@@ -583,7 +583,7 @@ const card = {
         const container = document.createElement("div");
         // on rajoute la classe
         container.classList.add("card");
-        // on rajoute les dataset qui nous serons trèèèèès utile pour savoir s'il y a un match ou non
+        // on rajoute les datasets qui nous serons trèèèèès utile pour savoir s'il y a un match ou non
         container.dataset.card = dataSet;
         return container;
     },
@@ -705,8 +705,8 @@ var _userName = require("./userName");
 // Ici, on retrouvera tout ce qui peut être relatif au bon fonctionnement du jeu.
 // on instancie nos variables que l'on va réutiliser dans nos fonctions.
 // isFlip pour savoir si la carte est retournée ou non
-// lockGame permet de locker le jeu, c'est à dire que le joueur ne pourra pas retourner les cartes.
-// firstCardSelected, secondCardSelected servent à savoir quelle est la première  et la seconde carte sélectionnées par l'utilisateur
+// lockGame permet de locker le jeu, cad que le joueur ne pourra pas retourner les cartes.
+// firstCardSelected, secondCardSelected servent à savoir quelles sont la première  et la seconde carte sélectionnées par l'utilisateur
 // start/resetButtonDOM permet de nous renvoyer l'élément voulu.
 let isFlip = false;
 let lockGame = false;
@@ -728,7 +728,7 @@ const randomName = [
     "Bewan", 
 ];
 const gameBoard = {
-    // Cette fonction permet de rajouter un event listener sur chaque carte et de démarer le jeu.
+    // Cette fonction permet de rajouter un event listener sur chaque carte et de démarrer le jeu.
     startBtn: (cardsList)=>{
         // on ajoute un event sur le bouton start
         startButtonDOM.addEventListener("click", ()=>{
@@ -744,7 +744,7 @@ const gameBoard = {
             _timer.timer.startTimer(startButtonDOM);
         });
     },
-    // Cette fonction permet de retirer les event listener sur chaque carte et de reset le jeu.
+    // Cette fonction permet de retirer les events listener sur chaque carte et de reset le jeu.
     resetBtn: (cardsList)=>{
         // on ajoute un event sur le bouton reset
         resetButtonDOM.addEventListener("click", ()=>{
@@ -760,25 +760,25 @@ const gameBoard = {
             gameBoard.shuffle(cardsList[0].parentElement);
             // on reset le compteur de mouvement
             _move.move.resetCount();
-            // on lock le game
+            // on lock le jeu
             lockGame = true;
         });
     },
     // Cette fonction permet :
-    // -  de savoir si on a selectionner la première carte ou la seconde carte
+    // -  de savoir si on a selectionné la première carte ou la seconde carte
     // - de retourner la carte si le jeu n'est pas lock
-    // - d'incrémenter le nombre de mouvement
+    // - d'incrémenter le nombre de mouvements
     flip: (event)=>{
-        // ajoute +1 au nombre de mouvement
+        // ajoute +1 au nombre de coups
         _move.move.addCount();
         const { parentElement  } = event.target;
         // si le jeu est bloqué alors on n'exécute pas le reste.
         if (lockGame) return;
-        // si l'élément parent sélectionné est égal à la première carte sélectionné, alors on n'éxécute pas le reste
+        // si l'élément parent sélectionné est égal à la première carte sélectionnée, alors on n'exécute pas le reste
         if (parentElement === firstCardSelected) return;
         // on ajoute la classe flip au parent (à notre div (div > img face | img retourné))
         parentElement.classList.add("flip");
-        // si isFlip est false alors on éxécute la condition.
+        // si isFlip est false alors on exécute la condition.
         if (!isFlip) {
             isFlip = true;
             firstCardSelected = parentElement;
@@ -789,7 +789,7 @@ const gameBoard = {
         // on va vérifier si les deux cartes sont les mêmes.
         gameBoard.isMatch();
     },
-    // Cette fonction permet de vérifier, via les dataset, si les deux cartes sont égales entre elles.
+    // Cette fonction permet de vérifier, via les datasets, si les deux cartes sont égales entre elles.
     isMatch: ()=>{
         let isMatch = firstCardSelected.dataset.card === secondCardSelected.dataset.card;
         isMatch ? gameBoard.disable() : gameBoard.unFlip();
@@ -835,7 +835,7 @@ const gameBoard = {
     // Fonction permettant de savoir si le jeu :
     // - continue
     // - s'arrête à cause du temps
-    // ou si le joueur à gagner.
+    // ou si le joueur a gagné.
     isWinOrLost: ()=>{
         // on récupère le temps
         const time = _timer.timer.getSeconde();
@@ -843,16 +843,16 @@ const gameBoard = {
         const numberOfFlippedCard = _get.get.allByClass(".flip").length;
         // on récupère la liste de toutes les cartes.
         const cardsList = _get.get.allByClass(".card");
-        // on prépare nous data dans un éventuel envoie vers notre serveur.
+        // on prépare nos datas pour un éventuel envoi vers notre serveur.
         const data = {
             userName: // s'il n'y a pas de pseudo rentré alors on en crée un au hasard avec notre tableau ligne 22
             _userName.userName.get() ?? `O'${randomName[Math.floor(Math.random() * randomName.length - 1)]}`,
             time,
-            // on récupère le nombre de coups joués
+            // on récupére le nombre de coups joués
             move: _move.move.getCount()
         };
         // si le nombre de cartes retournées est égal au nombre de cartes dans tout le jeu et que le temps est inférieur à 60 alors :
-        // - on vérouille le jeu
+        // - on verrouille le jeu
         // - on arrête le timer
         // - on envoie notre score
         // - on refresh le score
@@ -869,7 +869,7 @@ const gameBoard = {
             return alert(`C'est gagné ${data.userName} !!! Vous avez fait un score de ${data.time * data.move} (temps: ${data.time}s, move: ${data.move} )`);
         }
         // si le timer est supérieur ou égal à 60 alors c'est que le joueur à perdu.
-        // - on vérouille le jeu
+        // - on verrouille le jeu
         // - on arrête le timer
         // - on met le nombre de coups à 0
         // - on envoie une alerte annonçant la mauvaise nouvelle.
@@ -893,10 +893,10 @@ var _get = require("./utils/get");
 // Ici, on retrouvera tout ce qui peut être relatif à notre tableau.
 const tbodyDOM = _get.get.byId("tbody");
 const leadershipBoard = {
-    // Cette fonction va nous créer les lignes de notre tableau avec les data reçuent.
+    // Cette fonction va nous créer les lignes de notre tableau avec les data reçues.
     // Comme on fait une demande à notre serveur, on utilisera une fonction asynchrone.
     getListPlayers: async ()=>{
-        // on récupère les data de tout les joueurs.
+        // on récupére les data de tous les joueurs.
         const playersList = await _fetch.fetchData.getAllPlayers();
         // on va les trier suivant le score, on va récupérer les 10 premiers et on va créer les lignes dans notre tableau.
         playersList.data.sort((a, b)=>a.score - b.score
@@ -909,7 +909,7 @@ const leadershipBoard = {
     postScore: async (data)=>{
         await _fetch.fetchData.post(data);
     },
-    // Cette fonction permet de supprimer tout les enfants se trouvant dans notre body.
+    // Cette fonction permet de supprimer tous les enfants se trouvant dans notre body.
     refresh: ()=>{
         while(tbodyDOM.firstChild)tbodyDOM.removeChild(tbodyDOM.lastChild);
     },
@@ -957,7 +957,7 @@ parcelHelpers.export(exports, "fetchData", ()=>fetchData
 // Ici, on retrouvera tout ce qui peut être relatif aux requêtes que nous pouvons faire.
 const url = "https://memoxy-2022.herokuapp.com/players/"; // or http://localhost:8888/players/
 const fetchData = {
-    // Cette fonction permet de récupèrer tout les joueurs.
+    // Cette fonction permet de récupérer tous les joueurs.
     // comme on fait un appel vers notre back, on utilisera une fonction asynchrone.
     getAllPlayers: async ()=>{
         const allPlayersData = await fetch(url, {
@@ -1052,9 +1052,9 @@ const timer = {
     },
     // Cette fonction permet d'activer ou de désactiver le timer
     timerCount: (isON)=>{
-        // Si isOn est false alors on enlève l'interval.
+        // Si isOn est false alors on enlève l'intervalle.
         if (!isON) clearInterval(timeInterval);
-        // Si isOn est true et que les secondes sont à 0, alors on démarre l'interval.
+        // Si isOn est true et que les secondes sont à 0, alors on démarre l'intervalle.
         if (isON && seconde === 0) {
             clearInterval(timeInterval);
             timeInterval = setInterval(()=>{
@@ -1066,7 +1066,7 @@ const timer = {
                 // on change la couleur du compte à rebours.
                 timeDOM.style.color = "rgb(89, 119, 255)";
                 // si le temps est supérieur à 60 alors :
-                // - on arrête l'interval
+                // - on arrête l'intervalle
                 // - on regarde si le joueur a gagné ou perdu.
                 if (seconde >= 60) {
                     timeInterval = clearInterval(timeInterval);
@@ -1088,7 +1088,7 @@ parcelHelpers.export(exports, "move", ()=>move
 );
 let count = 0;
 const move = {
-    // Cette fonction permet d'ajoute +1 au nombre de coups
+    // Cette fonction permet d'ajouter +1 au nombre de coups
     addCount: ()=>{
         count++;
         return count;
@@ -1096,7 +1096,7 @@ const move = {
     // Cette fonction permet de retourner le nombre de coups
     getCount: ()=>count
     ,
-    // Cette fonction permet de mettre le nombre de coup à 0.
+    // Cette fonction permet de mettre le nombre de coups à 0.
     resetCount: ()=>count = 0
 };
 
@@ -1108,7 +1108,7 @@ parcelHelpers.export(exports, "userName", ()=>userName
 var _get = require("./utils/get");
 let name;
 const userName = {
-    // Cette fonction permet de récupèrer le pseudo que l'utilisateur a tapé dans l'input.
+    // Cette fonction permet de récupérer le pseudo que l'utilisateur a tapé dans l'input.
     inputForm: ()=>{
         const buttonInputDOM = _get.get.byId("name");
         const userNameDivDOM = _get.get.byId("userName");

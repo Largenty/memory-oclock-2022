@@ -41,9 +41,9 @@ const timer = {
 
   // Cette fonction permet d'activer ou de désactiver le timer
   timerCount: (isON) => {
-    // Si isOn est false alors on enlève l'interval.
+    // Si isOn est false alors on enlève l'intervalle.
     if (!isON) clearInterval(timeInterval);
-    // Si isOn est true et que les secondes sont à 0, alors on démarre l'interval.
+    // Si isOn est true et que les secondes sont à 0, alors on démarre l'intervalle.
     if (isON && seconde === 0) {
       clearInterval(timeInterval);
       timeInterval = setInterval(() => {
@@ -55,7 +55,7 @@ const timer = {
         // on change la couleur du compte à rebours.
         timeDOM.style.color = "rgb(89, 119, 255)";
         // si le temps est supérieur à 60 alors :
-        // - on arrête l'interval
+        // - on arrête l'intervalle
         // - on regarde si le joueur a gagné ou perdu.
         if (seconde >= 60) {
           timeInterval = clearInterval(timeInterval);

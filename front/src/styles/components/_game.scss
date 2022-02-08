@@ -27,9 +27,9 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 4rem;
-    // calcule de la width et de la height total du container.
+    // calcul de la width et de la height totale du container.
     // ici on souhaite avoir un 4 x 4 .
-    // on prend la w + h d'une carte et on multiplie par le nombre de colonne que l'on souhaite avoir.
+    // on prend la w + h d'une carte et on multiplie par le nombre de colonnes que l'on souhaite avoir.
     // et on rajoute le margin (4 * (5px * 2)) (margin entre chaque carte = 5px cf line 24).
     width: calc(85px * 4 + 40px);
     height: calc(115px * 4 + 40px);

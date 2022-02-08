@@ -6,10 +6,10 @@ import { get } from "./utils/get";
 const tbodyDOM = get.byId("tbody");
 
 const leadershipBoard = {
-  // Cette fonction va nous créer les lignes de notre tableau avec les data reçuent.
+  // Cette fonction va nous créer les lignes de notre tableau avec les data reçues.
   // Comme on fait une demande à notre serveur, on utilisera une fonction asynchrone.
   getListPlayers: async () => {
-    // on récupère les data de tout les joueurs.
+    // on récupére les data de tous les joueurs.
     const playersList = await fetchData.getAllPlayers();
     // on va les trier suivant le score, on va récupérer les 10 premiers et on va créer les lignes dans notre tableau.
     playersList.data
@@ -27,7 +27,7 @@ const leadershipBoard = {
     await fetchData.post(data);
   },
 
-  // Cette fonction permet de supprimer tout les enfants se trouvant dans notre body.
+  // Cette fonction permet de supprimer tous les enfants se trouvant dans notre body.
   refresh: () => {    
     while (tbodyDOM.firstChild) {
       tbodyDOM.removeChild(tbodyDOM.lastChild);

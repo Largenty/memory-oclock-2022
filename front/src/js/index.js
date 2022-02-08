@@ -8,8 +8,8 @@ import { get } from "./utils/get";
 
 const app = {
   init: () => {
-    // create.cards() est une fonction qui permet de créer chaque carte que l'on a dans nos data.
-    // Comme on a besoin d'une paires de chaque élément, on exécute deux fois la fonction.
+    // create.cards() est une fonction qui permet de créer chaque carte que l'on a dans nos datas.
+    // Comme on a besoin d'une paire de chaque élément, on exécute deux fois la fonction.
     for (let i = 1; i <= 2; i++) card.createCards();
 
     // On récupére chaque élément possédant la classe "card" (document.querySelectorAll) avec notre fonction custom (utils)
@@ -28,5 +28,5 @@ const app = {
     leadershipBoard.getListPlayers();
   },
 };
-// L’évènement load est émis lorsqu’une ressource et ses ressources dépendantes sont completement chargées.
+// L’évènement load est émis lorsqu’une ressource et ses ressources dépendantes sont complètement chargées.
 document.addEventListener("load", app.init());

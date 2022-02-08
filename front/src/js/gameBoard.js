@@ -8,8 +8,8 @@ import { userName } from "./userName";
 
 // on instancie nos variables que l'on va réutiliser dans nos fonctions.
 // isFlip pour savoir si la carte est retournée ou non
-// lockGame permet de locker le jeu, c'est à dire que le joueur ne pourra pas retourner les cartes.
-// firstCardSelected, secondCardSelected servent à savoir quelle est la première  et la seconde carte sélectionnées par l'utilisateur
+// lockGame permet de locker le jeu, cad que le joueur ne pourra pas retourner les cartes.
+// firstCardSelected, secondCardSelected servent à savoir quelles sont la première  et la seconde carte sélectionnées par l'utilisateur
 // start/resetButtonDOM permet de nous renvoyer l'élément voulu.
 
 let isFlip = false;
@@ -34,7 +34,7 @@ const randomName = [
 ];
 
 const gameBoard = {
-  // Cette fonction permet de rajouter un event listener sur chaque carte et de démarer le jeu.
+  // Cette fonction permet de rajouter un event listener sur chaque carte et de démarrer le jeu.
   startBtn: (cardsList) => {
     // on ajoute un event sur le bouton start
     startButtonDOM.addEventListener("click", () => {
@@ -52,7 +52,7 @@ const gameBoard = {
     });
   },
 
-  // Cette fonction permet de retirer les event listener sur chaque carte et de reset le jeu.
+  // Cette fonction permet de retirer les events listener sur chaque carte et de reset le jeu.
   resetBtn: (cardsList) => {
     // on ajoute un event sur le bouton reset
     resetButtonDOM.addEventListener("click", () => {
@@ -68,26 +68,26 @@ const gameBoard = {
       gameBoard.shuffle(cardsList[0].parentElement);
       // on reset le compteur de mouvement
       move.resetCount();
-      // on lock le game
+      // on lock le jeu
       lockGame = true;
     });
   },
 
   // Cette fonction permet :
-  // -  de savoir si on a selectionner la première carte ou la seconde carte
+  // -  de savoir si on a selectionné la première carte ou la seconde carte
   // - de retourner la carte si le jeu n'est pas lock
-  // - d'incrémenter le nombre de mouvement
+  // - d'incrémenter le nombre de mouvements
   flip: (event) => {
-    // ajoute +1 au nombre de mouvement
+    // ajoute +1 au nombre de coups
     move.addCount();
     const { parentElement } = event.target;
     // si le jeu est bloqué alors on n'exécute pas le reste.
     if (lockGame) return;
-    // si l'élément parent sélectionné est égal à la première carte sélectionné, alors on n'éxécute pas le reste
+    // si l'élément parent sélectionné est égal à la première carte sélectionnée, alors on n'exécute pas le reste
     if (parentElement === firstCardSelected) return;
     // on ajoute la classe flip au parent (à notre div (div > img face | img retourné))
     parentElement.classList.add("flip");
-    // si isFlip est false alors on éxécute la condition.
+    // si isFlip est false alors on exécute la condition.
     if (!isFlip) {
       isFlip = true;
       firstCardSelected = parentElement;
@@ -99,7 +99,7 @@ const gameBoard = {
     gameBoard.isMatch();
   },
 
-  // Cette fonction permet de vérifier, via les dataset, si les deux cartes sont égales entre elles.
+  // Cette fonction permet de vérifier, via les datasets, si les deux cartes sont égales entre elles.
   isMatch: () => {
     let isMatch =
       firstCardSelected.dataset.card === secondCardSelected.dataset.card;
@@ -147,7 +147,7 @@ const gameBoard = {
   // Fonction permettant de savoir si le jeu :
   // - continue
   // - s'arrête à cause du temps
-  // ou si le joueur à gagner.
+  // ou si le joueur a gagné.
   isWinOrLost: () => {
     // on récupère le temps
     const time = timer.getSeconde();
@@ -155,19 +155,19 @@ const gameBoard = {
     const numberOfFlippedCard = get.allByClass(".flip").length;
     // on récupère la liste de toutes les cartes.
     const cardsList = get.allByClass(".card");
-    // on prépare nous data dans un éventuel envoie vers notre serveur.
+    // on prépare nos datas pour un éventuel envoi vers notre serveur.
     const data = {
       userName:
         // s'il n'y a pas de pseudo rentré alors on en crée un au hasard avec notre tableau ligne 22
         userName.get() ??
         `O'${randomName[Math.floor(Math.random() * randomName.length - 1)]}`,
       time,
-      // on récupère le nombre de coups joués
+      // on récupére le nombre de coups joués
       move: move.getCount(),
     };
 
     // si le nombre de cartes retournées est égal au nombre de cartes dans tout le jeu et que le temps est inférieur à 60 alors :
-    // - on vérouille le jeu
+    // - on verrouille le jeu
     // - on arrête le timer
     // - on envoie notre score
     // - on refresh le score
@@ -189,7 +189,7 @@ const gameBoard = {
     }
 
     // si le timer est supérieur ou égal à 60 alors c'est que le joueur à perdu.
-    // - on vérouille le jeu
+    // - on verrouille le jeu
     // - on arrête le timer
     // - on met le nombre de coups à 0
     // - on envoie une alerte annonçant la mauvaise nouvelle.

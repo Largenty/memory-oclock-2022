@@ -31,7 +31,7 @@ const card = {
     const container = document.createElement("div");
     // on rajoute la classe
     container.classList.add("card");
-    // on rajoute les dataset qui nous serons trèèèèès utile pour savoir s'il y a un match ou non
+    // on rajoute les datasets qui nous serons trèèèèès utile pour savoir s'il y a un match ou non
     container.dataset.card = dataSet;
     return container;
   },

@@ -1,6 +1,6 @@
 # Comment créer un cluster mongoDB
 
-Vous allez voir c'est super simple !
+Vous allez voir c'est super-simple !
 
 ## Première étape : Créer votre compte
 
@@ -10,12 +10,12 @@ https://account.mongodb.com/account/login
 
 ## Deuxième étape : Déployer votre premier cluster !
 
-Une fois les questionnaires remplies. Vous devriez tomber sur la page :
+Une fois les questionnaires remplis. Vous devriez tomber sur la page :
 
 ### Deploy a cloud database
 
-Pour cette exercice nous allons utiliser un cluster gratuit.
-Vous pouvez donc sélectionner le cluster 'Shared' et cliqué sur create.
+Pour cet exercice nous allons utiliser un cluster gratuit.
+Vous pouvez donc sélectionner le cluster 'Shared' et cliquer sur create.
 
 On tombe alors sur la page :
 
@@ -25,11 +25,11 @@ On remarque que MongoDB à déjà sélectionner des choses.
 
 Pour moi, il me recommande un cluster AWS et un cluster localisé à Paris. Personnellement ça me convient parfaitement ! Mais si vous n'aimez pas amazon, vous pouvez sélectionner un autre amis (google ou microsoft).
 
-Si on déploit **Cluster Tier**, on remarque que l'on peut choisir plus de stockage pour X$ en plus. Nous on recherche quelques chose de gratuit et avant de remplir 512 MB de données pour un memory, on a le temps de le voir venir :).
+Si on déploit **Cluster Tier**, on remarque que l'on peut choisir plus de stockage pour X$ en plus. Nous on recherche quelque chose de gratuit et avant de remplir 512 MB de données pour un memory, on a le temps de le voir venir :).
 
 Dans les **additional settings** on remarquera une option que l'on ne peut pas activer. Notre cluster étant un M0 on ne pourra pas accéder à cette option de backup.
 
-Ensuite, on peut définir le nom de notre cluster. Je vous laisse libre court à votre imagination pour cette partie.
+Ensuite, on peut définir le nom de notre cluster. Je vous laisse libre cours à votre imagination pour cette partie.
 
 Et enfin on clique sur **Create a cluster** !
 
@@ -52,7 +52,7 @@ Si vous n'avez pas mongoDB Compass, pas de panique, il vous proposera plusieurs 
 Une fois MongoDB compass installé on aura juste à recopier le lien sur le site internet et le rajouter dans MongoDB Compass.
 Il faudra juste remplacer `<password>` (dans le lien) par le mot de passe que vous avez créé à l'étape 3.
 
-Si vous êtes arrivés jusqu'ici saint et sauf **félicitation vous venez de créer votre premier cluster mongoDB** !
+Si vous êtes arrivés jusqu'ici sain et sauf **félicitation vous venez de créer votre premier cluster mongoDB** !
 
 Si vous souhaitez aller un peu plus loin:
 https://www.mongodb.com/developer/how-to/use-atlas-on-heroku/

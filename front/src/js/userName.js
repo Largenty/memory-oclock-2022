@@ -2,7 +2,7 @@ import { get } from "./utils/get";
 
 let name;
 const userName = {
-  // Cette fonction permet de récupèrer le pseudo que l'utilisateur a tapé dans l'input.
+  // Cette fonction permet de récupérer le pseudo que l'utilisateur a tapé dans l'input.
   inputForm: () => {
     const buttonInputDOM = get.byId("name");
     const userNameDivDOM = get.byId("userName");
