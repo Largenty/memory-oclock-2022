@@ -167,8 +167,7 @@ td {
   width: 380px;
   height: 500px;
 }
-
-.flex {
+.game-flex {
   display: flex;
   align-items: center;
   flex-direction: column;

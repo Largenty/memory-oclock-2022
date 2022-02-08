@@ -4,12 +4,11 @@
     width: calc(85px * 4 + 40px);
     height: calc(115px * 4 + 40px);
   }
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  &-flex {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .card {
