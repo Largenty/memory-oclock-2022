@@ -1,6 +1,6 @@
 // Ici, on retrouvera tout ce qui peut être relatif aux requêtes que nous pouvons faire.
 
-const url = "http://localhost:8888/players/";
+const url = "https://memoxy-2022.herokuapp.com/players/"; // or http://localhost:8888/players/
 const fetchData = {
   // Cette fonction permet de récupèrer tout les joueurs.
   // comme on fait un appel vers notre back, on utilisera une fonction asynchrone.
