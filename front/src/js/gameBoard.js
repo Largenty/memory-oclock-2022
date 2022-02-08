@@ -9,7 +9,7 @@ import { userName } from "./userName";
 // on instancie nos variables que l'on va réutiliser dans nos fonctions.
 // isFlip pour savoir si la carte est retournée ou non
 // lockGame permet de locker le jeu, c'est à dire que le joueur ne pourra pas retourner les cartes.
-// firstCardSelected, secondCardSelected servent à savoir quelle est la première  et la seconde carte sélectionnée par l'utilisateur
+// firstCardSelected, secondCardSelected servent à savoir quelle est la première  et la seconde carte sélectionnées par l'utilisateur
 // start/resetButtonDOM permet de nous renvoyer l'élément voulu.
 
 let isFlip = false;
@@ -34,10 +34,11 @@ const randomName = [
 ];
 
 const gameBoard = {
-  // cette fonction prends comme argument la liste de toutes les cartes qui ont été créées
+  // Cette fonction permet de rajouter un event listener sur chaque carte et de démarer le jeu.
   startBtn: (cardsList) => {
     // on ajoute un event sur le bouton start
     startButtonDOM.addEventListener("click", () => {
+      // Au clique :
       // on reset le timer
       timer.resetTimer();
       // on reset le board
@@ -51,18 +52,19 @@ const gameBoard = {
     });
   },
 
-  // cette fonction prends comme argument la liste de toutes les cartes qui ont été créées
+  // Cette fonction permet de retirer les event listener sur chaque carte et de reset le jeu.
   resetBtn: (cardsList) => {
     // on ajoute un event sur le bouton reset
     resetButtonDOM.addEventListener("click", () => {
-      // on enlève l'event listener sur chaque carte et on retire la class flip.
+      // Au clique :
+      // on enlève l'event listener sur chaque carte et on retire la classe flip.
       cardsList.forEach((card) => {
         card.classList.remove("flip");
         card.removeEventListener("click", gameBoard.flip);
       });
       // on reset le timer
       timer.resetTimer();
-      // on rmélange le jeu
+      // on mélange le jeu
       gameBoard.shuffle(cardsList[0].parentElement);
       // on reset le compteur de mouvement
       move.resetCount();
@@ -71,44 +73,45 @@ const gameBoard = {
     });
   },
 
-  // cette fonction permet de savoir
-  // - si on a selectionner la première carte ou la seconde carte
+  // Cette fonction permet :
+  // -  de savoir si on a selectionner la première carte ou la seconde carte
   // - de retourner la carte si le jeu n'est pas lock
-  // - d'ingrémenter le nombre de mouvement
+  // - d'incrémenter le nombre de mouvement
   flip: (event) => {
     // ajoute +1 au nombre de mouvement
     move.addCount();
     const { parentElement } = event.target;
     // si le jeu est bloqué alors on n'exécute pas le reste.
     if (lockGame) return;
-    // si l'élément parent sélectionné est égal à la première carte sélectionné, alors on n'éxécute pas le reste de la fonction.
+    // si l'élément parent sélectionné est égal à la première carte sélectionné, alors on n'éxécute pas le reste
     if (parentElement === firstCardSelected) return;
-    // on ajoute la class flip au parent (à notre div (div > img face | img retourné))
+    // on ajoute la classe flip au parent (à notre div (div > img face | img retourné))
     parentElement.classList.add("flip");
-    // si isFlip est true alors on éxécute la condition.
+    // si isFlip est false alors on éxécute la condition.
     if (!isFlip) {
       isFlip = true;
       firstCardSelected = parentElement;
       return;
     }
-    // si isFlip === true, que le jeu n'est pas bloqué et que l'élément parent n'est pas égale à la première carte sélectionné alors ça veut dire que l'on a sélectionné la seconde carte
+    // si isFlip === true, que le jeu n'est pas bloqué et que l'élément parent n'est pas égal à la première carte sélectionnée alors ça veut dire que l'on a sélectionné la seconde carte
     secondCardSelected = parentElement;
     // on va vérifier si les deux cartes sont les mêmes.
     gameBoard.isMatch();
   },
 
+  // Cette fonction permet de vérifier, via les dataset, si les deux cartes sont égales entre elles.
   isMatch: () => {
-    // si les data de chaque carte sélectionnées correspondent alors on désactive ces cartes ou si elles ne correspondent pas, on les retourne.
     let isMatch =
       firstCardSelected.dataset.card === secondCardSelected.dataset.card;
     isMatch ? gameBoard.disable() : gameBoard.unFlip();
   },
 
+  // Cette fonction permet de retournées les cartes qui ont été sélectionnées et qui ne match pas entre elles.
   unFlip: () => {
-    // on lock le jeu, pour éviter que l'utilisateur retourne d'autres cartes.
+    // on lock le jeu, pour éviter que l'utilisateur retourne d'autres cartes. (petit filtre anti-triche)
     lockGame = true;
     setTimeout(() => {
-      // on retire la class flip des cartes que l'on vient de sélectionner.
+      // on retire la classe flip des cartes que l'on vient de sélectionner.
       firstCardSelected.classList.remove("flip");
       secondCardSelected.classList.remove("flip");
       // on reset le board cad (isFlip et lockgame = false)
@@ -116,7 +119,7 @@ const gameBoard = {
     }, 500);
   },
 
-  // Comme c'est un match, on retire les fonctions sur les cartes sélectionnées.
+  // Cette fonction permet de retirer les fonctions et les events sur les cartes sélectionnées.
   disable: () => {
     firstCardSelected.removeEventListener("click", gameBoard.flip);
     secondCardSelected.removeEventListener("click", gameBoard.flip);
@@ -126,8 +129,8 @@ const gameBoard = {
     gameBoard.resetBoard();
   },
 
+  // Cette fonction permet de redéfinir nos variables.
   resetBoard: () => {
-    // redéfinie les états des variables comme elles étaient au début du jeu.
     [isFlip, lockGame] = [false, false];
     [firstCardSelected, secondCardSelected] = [null, null];
   },
@@ -148,7 +151,6 @@ const gameBoard = {
   isWinOrLost: () => {
     // on récupère le temps
     const time = timer.getSeconde();
-
     // on regarde le nombre de cartes retournées
     const numberOfFlippedCard = get.allByClass(".flip").length;
     // on récupère la liste de toutes les cartes.

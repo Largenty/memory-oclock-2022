@@ -3,7 +3,6 @@ import { get } from "./utils/get";
 
 // Ici, on retrouvera tout ce qui peut être relatif au temps.
 
-// on définit nos variables
 let seconde = 0;
 let timeInterval = null;
 
@@ -13,7 +12,7 @@ const timeDOM = get.byId("time");
 const cardsList = get.allByClass(".card");
 
 const timer = {
-  // cette fonction permet de :
+  // Cette fonction permet de :
   // - démarrer le timer,
   // - de désactiver le bouton,
   // - de rajouter l'event clique sur chaque carte.
@@ -23,7 +22,7 @@ const timer = {
     gameBoard.startBtn(cardsList);
   },
 
-  // cette fonction permet de :
+  // Cette fonction permet de :
   // - désactiver le timer,
   // - d'activer le bouton start,
   // - de remettre la barre de progression à 0%
@@ -40,7 +39,7 @@ const timer = {
     timeDOM.style.color = "rgba(255, 70, 141, 0.918)";
   },
 
-  // cette fonction permet d'activer ou de désactiver le timer
+  // Cette fonction permet d'activer ou de désactiver le timer
   timerCount: (isON) => {
     // Si isOn est false alors on enlève l'interval.
     if (!isON) clearInterval(timeInterval);
@@ -49,7 +48,7 @@ const timer = {
       clearInterval(timeInterval);
       timeInterval = setInterval(() => {
         seconde += 1;
-        // on augmente la progresse barre de façon progressive suivant le nombre de secondes
+        // on augmente la progresse barre de façon progressive, suivant le nombre de secondes
         progressBar.style.width = ((seconde * 100) / 60).toFixed(2) + "%";
         // on diminue le compte à rebours.
         timeDOM.textContent = `${60 - seconde}s`;
@@ -57,7 +56,7 @@ const timer = {
         timeDOM.style.color = "rgb(89, 119, 255)";
         // si le temps est supérieur à 60 alors :
         // - on arrête l'interval
-        // - on regarde si on a gagné ou perdu.
+        // - on regarde si le joueur a gagné ou perdu.
         if (seconde >= 60) {
           timeInterval = clearInterval(timeInterval);
           gameBoard.isWinOrLost();
@@ -68,7 +67,7 @@ const timer = {
 
     return clearInterval(timeInterval);
   },
-  // cette fonction permet de retourner le nombre de seconde.
+  // Cette fonction permet de retourner le nombre de seconde.
   getSeconde: () => seconde,
 };
 

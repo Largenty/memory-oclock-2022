@@ -2,7 +2,7 @@
 
 const url = "http://localhost:8888/players/";
 const fetchData = {
-  // cette fonction permet de récupèrer tout les joueurs.
+  // Cette fonction permet de récupèrer tout les joueurs.
   // comme on fait un appel vers notre back, on utilisera une fonction asynchrone.
   getAllPlayers: async () => {
     const allPlayersData = await fetch(url, {
@@ -23,7 +23,7 @@ const fetchData = {
 
     return allPlayersData;
   },
-  // cette fonction permet de créer le score d'un joueur.
+  // Cette fonction permet d'envoyer une requête pour enregistrer notre joueur et sa performance'
   // elle prendra en paramètre: le userName, le temps et les coups.
   // comme on fait un appel vers notre back, on utilisera une fonction asynchrone.
   post: async (data) => {
