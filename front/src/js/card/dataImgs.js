@@ -1,3 +1,5 @@
+// data pour créer les images
+
 const dataImgs = [
   {
     source: "https://www.play-in.com/images/cartes/stronghold/mox_diamond.jpg",

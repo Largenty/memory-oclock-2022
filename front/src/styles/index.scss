@@ -4,18 +4,17 @@
 // utils
 @import "./utils/colors";
 
-// components
+// elements
 @import "./elements/body";
 @import "./elements/header";
 @import "./elements/footer";
 @import "./elements/button";
 @import "./elements/table";
 
+// components
+@import "./components/userName";
+@import "./components/game";
+@import "./components/progressBar";
 
-// body css
-@import "./userName";
-@import "./game";
-@import "./progressBar";
-
-
+// Query
 @import "./query/mediaQuery";

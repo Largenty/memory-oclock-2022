@@ -164,16 +164,12 @@ td {
   width: 100%;
 }
 .game-container {
-  display: flex;
-  flex-wrap: wrap;
   width: 380px;
   height: 500px;
-  margin: auto;
 }
 
 .flex {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
