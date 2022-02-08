@@ -40,7 +40,7 @@ Utiliser les commandes suivantes :
 - Cliquez sur le bouton **start** pour commencer une partie de **60sec**.
 - Vous pouvez à tout moment recommencer le jeu en appuyant sur le bouton **reset** _(le jeu sera alors mélangé, vos mouvements remis à 0 et le timer remis à 60sec)_.
 - Seul les dix meilleurs scores apparaîtront dans le tableau
-- Le score est calculé suivant le nombre de mouvement (clique sur une carte) _ le temps que vous avez mis. _(move _ time)_
+- Le score est calculé suivant le nombre de mouvement (clique sur une carte) + le temps que vous avez mis. _(move + time)_
 - Que la force soit avec vous !
 - Have Fun !
 
