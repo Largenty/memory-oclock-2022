@@ -27,7 +27,10 @@ Utiliser les commandes suivantes :
 
 ### Pour lancer le jeu:
 
-- ```` npm run start ```` côté back et front.
+- `npm run start` côté front si vous souhaitez utiliser le serveur heroku (le serveur mettra environ 30sec à démarrer).
+  Si vous souhaitez utiliser le back à la place d'héroku :
+- changer dans `front/src/js/utils/fetch.js` l'url par `http://localhost:8888/players/`
+- Puis `npm run start` côté back et front :)
 
 ## Fonctionnalité du jeu :
 
@@ -65,12 +68,13 @@ Utiliser les commandes suivantes :
 ## Pour aller plus loin :
 
 Si vous le souhaitez, vous pouvez essayer d'incorporer deux trois fonctionnalités en plus :
+
 - ajouter un boutton 'cancel' pour changer de pseudo
 - ajouter des bouttons pour choisir le nombre de paires à découvrir (ex: 4x4, 8x8, 12x12)
 - afficher la position du joueur même s'il n'est pas dans le top 10 ;)
 - rajouter le nombre de coups à côté du temps.
 - rajouter un boutton pour changer la limite de temps.
 
-## Fichier postman : 
+## Fichier postman :
 
 Si vous utilisez postman, vous pouvez importer le fichier dans l'application POSTMAN pour ne pas à avoir à écrire les routes :)
