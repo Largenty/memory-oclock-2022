@@ -6,24 +6,25 @@ const router = express.Router();
 // Pour contruire notre route on doit fournir quelques éléments :
 // - le nom de la route ( .route('/'))
 // - la méthode que l'on souhaite utiliser (.get, .post, .put/.patch, .delete)
-// - la fonction que l'on souhaite exécuter par la suite. (elle se trouve dans notre méthode)
+// - la fonction que l'on souhaite exécuter par la suite
 // ex:
 // router.route('/test').get((req, res) => console.log('hello))
-// La chose qui est bien avec ces méthodes (merci express), c'est que l'on peut faire passer x function dans notre méthode pour vérifier d'autre chose avant d'envoyer la requête sur notre serveur.
-// On utilisera alors en plus de (req: request, res: response) next ! Notre fonction (intermédiaire) sera alors un middleware.
+// La chose qui est bien avec ces méthodes (merci express), c'est que l'on peut faire passer x functions pour vérifier d'autres choses ! Avant que cela ne touche le serveur.
+// On utilisera alors en plus de req: request et res: response, next ! Notre fonction (intermédiaire) sera alors un middleware.
 // ex:
 // router.route('/').get((req, res, next) => {req !== null ? next(): console.log('Oups'), (req, res)=>{console.log('je suis la deuxième fonction')}})
 
 // Getting all player
 
 // On utilisera une fonction asynchrone car nous devons attendre la réponse de notre serveur.
-// Ici on attend la liste de tous les joueurs, donc on utilise la méthode GET.
+// Ici on attend la liste de tout les joueurs, donc on utilise la méthode GET d'express.
 router.route("/").get(async (req, res) => {
   try {
-    // Model.find() permettra de nous retourner tous les joueurs.
+    // Model.find() permettra de retourner tout les joueurs.
     const players = await Player.find();
-    // Si le nombre de joueurs est supérieur ou égal à 1 alors on retourne ce/ces joueurs. Sinon on envoit un message pour avertir que notre requête à fonctionné mais il n'y a pas de joueur d'enregistré.
-    // on envoie le statut de notre requête (201 = réussi, 500 = le serveur a rencontré un problème)
+    // Si le nombre de joueurs est supérieur ou égal à 1 alors on retourne ce/ces joueurs. 
+    // Sinon on envoit un message pour avertir que notre requête a fonctionné mais il n'y a pas de joueurs d'enregistrés.
+    // Concernant les statut : (201 = réussi, 500 = le serveur a rencontré un problème)
     // Je vous invite à regarder les autres statut ici :
     // https://developer.mozilla.org/fr/docs/Web/HTTP/Status
     players.length >= 1
@@ -38,11 +39,10 @@ router.route("/").get(async (req, res) => {
 });
 
 // Post one
-// Ici au lieu d'avoir tous les joueurs on souhaite poster le score d'un joueur qui vient de jouer.
+// Ici au lieu d'avoir tout les joueurs on souhaite enregistrer les données d'un joueur que nous a envoyé le fornt.
 router.route("/").post(async (req, res) => {
-  // on récupére les données que nous envoie le front dans le body de la requête.
   const { userName, time, move } = req.body;
-  // on crée ensuite un nouveau joueur avec ces données
+  // on crée un nouveau joueur avec ces données et suivant notre model !
   const player = new Player({
     userName,
     time,
@@ -53,7 +53,7 @@ router.route("/").post(async (req, res) => {
   // Et on essaye de sauvegarder le tout dans notre BDD.
   try {
     const newPlayer = await player.save();
-    // si on réussi un petit message comprenant les nouvelles data créées est retourné avec un statut : 201 :)
+    // si on réussi on a un retourne un joli : 201 
     res.status(201).json(newPlayer);
   } catch (error) {
     // Sinon on envoie un petit message avec un statut 400:
@@ -65,11 +65,12 @@ router.route("/").post(async (req, res) => {
 });
 
 
-// Ici on va créer une fonction qui va venir vérifier si un joueur exist (grâce à l'id que l'on passer dans l'url)
+// Ici on va créer une fonction qui va venir vérifier si un joueur existe (grâce à l'id que l'on passer dans l'url)
 // Cette fonction est un middleware.
 const verifyIfplayerExist = async (req, res, next) => {
   let player;
   try {
+    // Cette fois ci, on va récupèrer l'id dans notre route et on va vérifier si on le trouve.
     player = await Player.findById(req.params.id);
     if (player == null) {
       return res.status(404).json({ message: "cannot find player" });
@@ -87,8 +88,7 @@ router.route("/:id").get(verifyIfplayerExist, async (req, res) => {
 });
 
 // Petit challenge:
-// Je vous laisse créer la fonction à l'intérieur de cette méthode pour supprimer un utilisateur
+// Je vous laisse créer la fonction qui va permettre de supprimer un utilisateur.
 router.route("/:id").delete(verifyIfplayerExist, async (req, res) => {});
 
-// On export notre module pour pouvoir l'utiliser ailleur.
 module.exports = router;

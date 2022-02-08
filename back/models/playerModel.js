@@ -5,13 +5,7 @@ const mongoose = require("mongoose");
 
 // Pour chaque champs on va spécifier :
 // - le type attendu
-// - si il est obligatoire ou non (si on ne le spécifie pas required est automatiquement paramétré à false)
-
-// ex : new mongoose.Schema({
-//   date: {typer: Date, required: true}
-// })
-
-// Ici on va juste rentrer le pseudo du joueur, le nombre de coups qu'il a fait, le temps et son score.
+// - s'il est obligatoire ou non (si on ne le spécifie pas required est automatiquement paramétré à false)
 
 const playerSchema = new mongoose.Schema({
   userName: { type: String, required: true },
@@ -20,5 +14,5 @@ const playerSchema = new mongoose.Schema({
   score: Number,
 });
 
-// Et on n'oublie pas d'exporter notre model, pour avoir accès à ce model dans nos autres fichiers :) !
+// Pour avoir accès à ce model dans nos autres fichiers, on export le module :) !
 module.exports = mongoose.model("Player", playerSchema);

@@ -25,12 +25,16 @@ Utiliser les commandes suivantes :
 - `touch .env && cp .env.test .env` _(on crée un fichier .env et on copie ce qu'il y a dans .env.test dans notre nouveau fichier .env)_
 - `npm run start`
 
+### Pour lancer le jeu:
+
+- ```` npm run start ```` côté back et front.
+
 ## Fonctionnalité du jeu :
 
 - Dans cette version de mémory, vous pouvez créer un pseudo et l'utiliser pour sauvegarder votre score.
 - S'il n'y a pas de pseudo d'entrée, l'application vous en choissira un.
-- Cliquez sur le button **start** pour commencer une partie de **60sec**.
-- Vous pouvez à tout moment recommencer le jeu en appuyant sur le button **reset** _(le jeu sera alors mélangé, vos mouvements remis à 0 et le timer remis à 60sec)_.
+- Cliquez sur le bouton **start** pour commencer une partie de **60sec**.
+- Vous pouvez à tout moment recommencer le jeu en appuyant sur le bouton **reset** _(le jeu sera alors mélangé, vos mouvements remis à 0 et le timer remis à 60sec)_.
 - Seul les dix meilleurs scores apparaîtront dans le tableau
 - Le score est calculé suivant le nombre de mouvement (clique sur une carte) _ le temps que vous avez mis. _(move _ time)_
 - Que la force soit avec vous !
