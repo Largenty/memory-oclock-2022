@@ -23,7 +23,7 @@ const fetchData = {
 
     return allPlayersData;
   },
-  // Cette fonction permet d'envoyer une requête pour enregistrer notre joueur et sa performance'
+  // Cette fonction permet d'envoyer une requête pour enregistrer notre joueur et sa performance
   // elle prendra en paramètre: le userName, le temps et les coups.
   // comme on fait un appel vers notre back, on utilisera une fonction asynchrone.
   post: async (data) => {
